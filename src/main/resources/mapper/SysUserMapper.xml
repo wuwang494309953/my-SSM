@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.saber.zq.dao.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.saber.zq.entity.SysUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="dept_id" jdbcType="INTEGER" property="deptId" />
+    <result column="mail" jdbcType="VARCHAR" property="mail" />
+    <result column="operate_ip" jdbcType="VARCHAR" property="operateIp" />
+    <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, dept_id, mail, operate_ip, operate_time, operator, password, remark, status, 
+    telephone, username
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.saber.zq.entity.SysUser">
+    insert into sys_user (id, dept_id, mail, 
+      operate_ip, operate_time, operator, 
+      password, remark, status, 
+      telephone, username)
+    values (#{id,jdbcType=INTEGER}, #{deptId,jdbcType=INTEGER}, #{mail,jdbcType=VARCHAR}, 
+      #{operateIp,jdbcType=VARCHAR}, #{operateTime,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{telephone,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.saber.zq.entity.SysUser">
+    insert into sys_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="deptId != null">
+        dept_id,
+      </if>
+      <if test="mail != null">
+        mail,
+      </if>
+      <if test="operateIp != null">
+        operate_ip,
+      </if>
+      <if test="operateTime != null">
+        operate_time,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="mail != null">
+        #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="operateIp != null">
+        #{operateIp,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null">
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.saber.zq.entity.SysUser">
+    update sys_user
+    <set>
+      <if test="deptId != null">
+        dept_id = #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="mail != null">
+        mail = #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="operateIp != null">
+        operate_ip = #{operateIp,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null">
+        operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.saber.zq.entity.SysUser">
+    update sys_user
+    set dept_id = #{deptId,jdbcType=INTEGER},
+      mail = #{mail,jdbcType=VARCHAR},
+      operate_ip = #{operateIp,jdbcType=VARCHAR},
+      operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
